@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 :root {
-    --primary-color: #6a1b9a; /* Your desired accent color */
-    --secondary-color: #f7f2f0; /* A light beige */
-    --tertiary-color: #5d4037; /* A dark brown */
+    --primary-color: #6a1b9a;
+    --secondary-color: #f7f2f0;
+    --tertiary-color: #5d4037;
     --light-gray: #f2f2f2;
     --dark-text: #333;
     --light-text: #fefefe;
@@ -17,6 +17,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -24,6 +25,9 @@ body {
     line-height: 1.6;
     background-color: var(--secondary-color);
     color: var(--dark-text);
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* --- Navigation Bar --- */
@@ -32,10 +36,11 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
-    background-color: transparent;
+    background-color: rgba(247, 242, 240, 0.95);
     position: sticky;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 .logo {
@@ -101,26 +106,29 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 5%;
-    min-height: 80vh;
+    padding: 3rem 5%;
+    min-height: auto;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
     gap: 2rem;
 }
 
 .hero-content {
     flex: 1.5;
+    max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--tertiary-color);
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     margin-bottom: 2rem;
+    line-height: 1.6;
 }
 
 .btn {
@@ -131,6 +139,7 @@ nav ul li a:hover {
     text-decoration: none;
     font-weight: 600;
     transition: background-color 0.3s;
+    display: inline-block;
 }
 
 .btn:hover {
@@ -157,25 +166,28 @@ nav ul li a:hover {
     justify-content: center;
     gap: 2rem;
     padding: 2rem 5%;
-    margin: -4rem auto 2rem;
+    margin: -2rem auto 2rem;
     max-width: 900px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
 .stat-card {
     text-align: center;
+    flex: 1;
+    min-width: 150px;
 }
 
 .stat-card h3 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
     color: var(--primary-color);
 }
 
 .stat-card p {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     color: var(--tertiary-color);
 }
 
@@ -184,7 +196,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 5%;
+    padding: 4rem 5%;
     gap: 2rem;
     background-color: var(--light-gray);
     margin-top: 4rem;
@@ -209,7 +221,7 @@ nav ul li a:hover {
 }
 
 .about-content h2 {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 4vw, 2rem);
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--tertiary-color);
@@ -217,6 +229,13 @@ nav ul li a:hover {
 
 .about-content p {
     margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.about-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .about-buttons .download-cv-btn {
@@ -236,7 +255,7 @@ nav ul li a:hover {
 .services-section {
     display: flex;
     justify-content: space-between;
-    padding: 5rem 5%;
+    padding: 4rem 5%;
     gap: 3rem;
 }
 
@@ -246,10 +265,15 @@ nav ul li a:hover {
 }
 
 .services-intro h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--tertiary-color);
+}
+
+.services-intro p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    margin-bottom: 2rem;
 }
 
 .services-list {
@@ -271,9 +295,18 @@ nav ul li a:hover {
     transform: translateY(-5px);
 }
 
+.service-card h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    font-size: clamp(0.95rem, 2vw, 1rem);
+}
+
 /* Portfolio Page Section (Projects) */
 .portfolio-section {
-    padding: 5rem 5%;
+    padding: 4rem 5%;
     text-align: center;
 }
 
@@ -282,18 +315,19 @@ nav ul li a:hover {
 }
 
 .portfolio-intro h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
     color: var(--tertiary-color);
 }
 
 .portfolio-intro p {
     color: #666;
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -322,8 +356,13 @@ nav ul li a:hover {
 }
 
 .project-content h3 {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
     margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    margin-bottom: 1rem;
 }
 
 .case-study-btn {
@@ -331,6 +370,7 @@ nav ul li a:hover {
     text-decoration: none;
     font-weight: 600;
     transition: transform 0.3s;
+    display: inline-block;
 }
 
 .case-study-btn:hover {
@@ -347,12 +387,12 @@ nav ul li a:hover {
 
 /* About Page (Work Process) Section */
 .about-page-section {
-    padding: 5rem 5%;
+    padding: 3rem 5%;
 }
 
 .personal-interests-container,
 .work-process-container {
-    padding: 5rem 5%;
+    padding: 4rem 5%;
     text-align: center;
 }
 
@@ -369,9 +409,14 @@ nav ul li a:hover {
 
 .interests-intro h2,
 .process-intro h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
     color: var(--tertiary-color);
+}
+
+.interests-intro p,
+.process-intro p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 .interests-grid,
@@ -413,31 +458,15 @@ nav ul li a:hover {
 
 .interest-card h3,
 .process-card h3 {
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
     color: var(--tertiary-color);
     margin-bottom: 0.5rem;
 }
 
 .interest-card p,
 .process-card p {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 2vw, 1rem);
     color: var(--dark-text);
-}
-
-.interest-card .icon,
-.process-card .icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.interest-card:hover .icon,
-.process-card:hover .icon {
-    opacity: 1;
 }
 
 /* Call to Action Section */
@@ -445,7 +474,7 @@ nav ul li a:hover {
     background-color: var(--primary-color);
     color: var(--light-text);
     text-align: center;
-    padding: 5rem 5%;
+    padding: 4rem 5%;
 }
 
 .cta-content {
@@ -454,37 +483,13 @@ nav ul li a:hover {
 }
 
 .cta-content h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 1rem;
 }
 
 .cta-content p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     margin-bottom: 2rem;
-}
-
-/* Footer */
-.main-footer {
-    background-color: var(--tertiary-color);
-    color: var(--light-text);
-    text-align: center;
-    padding: 3rem 5%;
-}
-
-.social-links a {
-    color: var(--light-text);
-    font-size: 1.5rem;
-    margin: 0 10px;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: var(--primary-color);
-}
-
-.main-footer p {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
 }
 
 /* Contact Page Section */
@@ -493,7 +498,7 @@ nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5rem 5%;
+    padding: 4rem 5%;
     text-align: center;
 }
 
@@ -502,10 +507,14 @@ nav ul li a:hover {
 }
 
 .contact-intro h2 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 700;
     color: var(--tertiary-color);
     margin-bottom: 1rem;
+}
+
+.contact-intro p {
+    font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
 .contact-form-container {
@@ -526,6 +535,7 @@ nav ul li a:hover {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1rem);
 }
 
 .contact-form input,
@@ -534,6 +544,7 @@ nav ul li a:hover {
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: clamp(0.95rem, 2vw, 1rem);
 }
 
 .contact-form .btn {
@@ -542,7 +553,94 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-/* --- Media Queries (for mobile responsiveness) --- */
+/* Footer Styles */
+.footer {
+    background-color: var(--tertiary-color);
+    color: var(--light-text);
+    padding: 3rem 5% 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    gap: 3rem;
+}
+
+.footer-info {
+    flex: 1;
+    max-width: 400px;
+}
+
+.footer-info h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--light-text);
+}
+
+.footer-info p {
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.footer-social {
+    flex: 1;
+    text-align: right;
+}
+
+.footer-social h4 {
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--light-text);
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.3);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
+    opacity: 0.8;
+}
+
+/* --- Media Queries --- */
+
+/* Tablets (768px and below) */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -552,7 +650,7 @@ nav ul li a:hover {
 
     nav ul {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.75rem;
         text-align: center;
     }
 
@@ -560,18 +658,190 @@ nav ul li a:hover {
         margin-right: 0;
     }
     
-    .hero-section, .about-me-section, .services-section, .work-process-container {
+    .hero-section {
         flex-direction: column;
         text-align: center;
-        gap: 2rem;
+        padding: 2rem 5%;
     }
 
-    .hero-image, .about-image {
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-image {
         margin-top: 2rem;
+        max-width: 400px;
     }
     
     .stats-section {
         flex-direction: column;
         padding: 1.5rem;
+        margin: 0 5% 2rem;
+    }
+
+    .stat-card {
+        padding: 1rem 0;
+    }
+
+    .about-me-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 5%;
+    }
+
+    .about-image {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        max-width: 400px;
+    }
+
+    .about-buttons {
+        justify-content: center;
+    }
+
+    .services-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem 5%;
+    }
+
+    .services-intro {
+        max-width: 100%;
+    }
+
+    .work-process-container {
+        padding: 3rem 5%;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .footer-info {
+        max-width: 100%;
+    }
+
+    .footer-social {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Small tablets and large phones (576px and below) */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 1rem 3%;
+    }
+
+    .logo span {
+        font-size: 1.25rem;
+    }
+
+    .contact-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-section,
+    .about-me-section,
+    .services-section,
+    .portfolio-section,
+    .contact-section {
+        padding: 2rem 3%;
+    }
+
+    .btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .stats-section {
+        margin: 0 3% 2rem;
+        gap: 1rem;
+    }
+
+    .portfolio-grid {
+        gap: 1.5rem;
+    }
+
+    .service-card,
+    .project-card,
+    .interest-card,
+    .process-card {
+        padding: 1.5rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .interests-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer {
+        padding: 2rem 3% 1rem;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Extra small phones (400px and below) */
+@media (max-width: 400px) {
+    .logo span {
+        font-size: 1.1rem;
+    }
+
+    .profile-pic {
+        width: 35px;
+        height: 35px;
+    }
+
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    .hero-section,
+    .about-me-section,
+    .services-section {
+        padding: 1.5rem 3%;
+    }
+
+    .about-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .about-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .service-card,
+    .project-card {
+        padding: 1.25rem;
+    }
+
+    .contact-form-container {
+        padding: 1.5rem 1rem;
     }
 }
